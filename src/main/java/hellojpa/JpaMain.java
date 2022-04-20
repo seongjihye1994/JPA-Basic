@@ -34,10 +34,9 @@ public class JpaMain {
         try {
 
             // 비영속 상태
-            Member member1 = new Member(200L, "member200");
 
             // 영속 상태
-            em.persist(member1);
+
 
             // 트랜잭션 커밋
             tx.commit(); // 쿼리문은 정확히 이 때 실행된다.

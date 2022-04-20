@@ -33,11 +33,20 @@ public class JpaMain {
         // 실제 비즈니스 로직 작성
         try {
 
-            Member findMember = em.find(Member.class, 1L);
-            findMember.setName("HelloJPA");
+            // 비영속 상태
+            Member member1 = new Member(200L, "member200");
+
+            // 영속 상태
+            em.persist(member1);
 
             // 트랜잭션 커밋
-            tx.commit();
+            tx.commit(); // 쿼리문은 정확히 이 때 실행된다.
+
+            // AFTER 이후에 쿼리문이 날라가는 이유는?
+            // 트랜잭션이 commit 될 때 실제로 DB에 적용되기 때문이다.
+            // em.persist() 는 영속 상태로 앤티티 매니저 내부에 있는 영속성 컨텍스트에 들어간다.
+            // em.detach() 를 하면 영속성 컨텍스트에서 분리된 준 영속상태에 해당한다.
+            // em.remove() 를 하면 객체를 삭제한다.
 
         } catch (Exception e) {
             // 에러 발생시 트랜잭션 롤백

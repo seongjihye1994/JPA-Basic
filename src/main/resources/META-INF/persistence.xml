@@ -21,6 +21,7 @@
             <property name="hibernate.show_sql" value="true"/> <!-- 콘솔에서 쿼리문 보기 -->
             <property name="hibernate.format_sql" value="true"/> <!-- 콘솔에서 쿼리문 포맷해서 보기 -->
             <property name="hibernate.use_sql_comments" value="true"/> <!-- 콘솔에서 쿼리문 볼 때 주석 추가해서 보기 -->
+            <property name="hibernate.jdbc.batch_size" value="10"/> <!-- JDBC 배치 사이즈 -->
             <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
 
         </properties>
